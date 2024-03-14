@@ -61,7 +61,7 @@ export default function Header(props) {
                             className="icon-edit cursor-pointer"
                             alt="icon_exit"
                           />
-                          profile
+                          profile 5555
                         </Link>
                       </li>
                       <li>
