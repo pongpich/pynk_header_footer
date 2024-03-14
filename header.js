@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-export default function header() {
+export default function Header(props) {
   return (
     <div className="navbar-pynk">
       <nav className="navbar navbar-expand-sm bg-light information-nav fixed-top">
