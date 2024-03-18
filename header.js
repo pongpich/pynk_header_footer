@@ -7,8 +7,6 @@ import icon_exit from "./image/exit.png";
 import truck_line from "./image/truck-line.png";
 import shopping_bag_line from "./image/shopping-bag-line.png";
 
-import GoogleLoginComponent from "./googleFacebookLineLogin/googleLogin";
-
 export default function Header(props) {
   return (
     <div className="navbar-pynk">
@@ -120,9 +118,7 @@ export default function Header(props) {
                         </Link>
                       </li>
                       <li>
-                        <div class="google_style">
-                          <GoogleLoginComponent />
-                        </div>
+                        <div class="google_style">{/* googlog */}</div>
                       </li>
                     </ul>
                   </div>
