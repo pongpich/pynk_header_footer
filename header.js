@@ -15,14 +15,17 @@ export default function Header(props) {
     : "http://localhost:3000/#";
 
   const handleLogin = () => {
+    console.log('login or register')
     window.location.href = urlPynk + "/login";
   };
 
   const handleOnUserLogout = () => {
     console.log("4444");
-    /*     Cookies.set("loginUser", null);
-    Cookies.set("loginUserWeb", null); */
+    window.location.href = urlPynk + "/home";
+    Cookies.set("loginUser", null);
+    // Cookies.set("loginUserWeb", null);
   };
+
   return (
     <div className="navbar-pynk">
       <nav className="navbar navbar-expand-sm bg-light information-nav fixed-top">
