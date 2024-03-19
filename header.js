@@ -6,8 +6,23 @@ import ellipse24 from "./image/Ellipse24.png";
 import icon_exit from "./image/exit.png";
 import truck_line from "./image/truck-line.png";
 import shopping_bag_line from "./image/shopping-bag-line.png";
+import Cookies from "js-cookie";
 
 export default function Header(props) {
+  let urlProd = false;
+  const urlPynk = urlProd
+    ? "https://staging.pynk.co/#"
+    : "http://localhost:3000/#";
+
+  const handleLogin = () => {
+    window.location.href = urlPynk + "/login";
+  };
+
+  const handleOnUserLogout = () => {
+    console.log("4444");
+    /*     Cookies.set("loginUser", null);
+    Cookies.set("loginUserWeb", null); */
+  };
   return (
     <div className="navbar-pynk">
       <nav className="navbar navbar-expand-sm bg-light information-nav fixed-top">
@@ -73,7 +88,7 @@ export default function Header(props) {
                       <li>
                         <a
                           class="dropdown-item"
-                          onClick={() => this.onUserLogout()}
+                          onClick={() => handleOnUserLogout()}
                         >
                           <img
                             src={icon_exit}
@@ -118,7 +133,17 @@ export default function Header(props) {
                         </Link>
                       </li>
                       <li>
-                        <div class="google_style">{/* googlog */}</div>
+                        <a
+                          class="dropdown-item"
+                          onClick={() => handleOnUserLogout()}
+                        >
+                          <img
+                            src={icon_exit}
+                            className="icon-edit cursor-pointer"
+                            alt="icon_exit"
+                          />
+                          ออกจากระบบ
+                        </a>
                       </li>
                     </ul>
                   </div>
@@ -126,7 +151,7 @@ export default function Header(props) {
               ) : (
                 <button
                   className="nav-link nav-linkHead2 pointer bold  display-none"
-                  /*  onClick={() => this.props && props.history.push("/login")} */
+                  onClick={handleLogin}
                 >
                   เข้าสู่ระบบ/ลงทะเบียน
                 </button>
