@@ -15,14 +15,15 @@ export default function Header(props) {
     : "http://localhost:3000/#";
 
   const handleLogin = () => {
-    console.log('login or register')
+    console.log("login or register");
     window.location.href = urlPynk + "/login";
   };
 
   const handleOnUserLogout = () => {
-    console.log("4444");
+    console.log("handle OnUser Logout");
     window.location.href = urlPynk + "/home";
-    Cookies.set("loginUser", null);
+    window.location.reload(true);
+    Cookies.remove("loginUser");
     // Cookies.set("loginUserWeb", null);
   };
 
