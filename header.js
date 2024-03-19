@@ -25,6 +25,10 @@ export default function Header(props) {
     // window.location.reload(true);
     Cookies.set("loginUser",null);
     // Cookies.set("loginUserWeb", null);
+
+    if (document.getElementById("icon-google")) {
+      document.getElementById("icon-google").click();
+    }
   };
 
   return (
