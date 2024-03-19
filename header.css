@@ -1,0 +1,374 @@
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+:root {
+    --lightest-pink-white: #fff8fb;
+    --lightest-pink: #fcdeec;
+    --light-pink: #f7abce;
+    --normal-pink: #ef60a3;
+    --darkest-pink: #960051;
+    --white: #ffffff;
+    --lightest-BG: #e8e8e8;
+    --disabled-BG: #dddddd;
+    --placeholder: #acacac;
+    --disabled-text: #7a7a7a;
+    --border: #4a4a4a;
+    --main-text: #000;
+    --lightest-red: #fbe6e9;
+    --light-red: #f12d3e;
+    --normal-red: #dc061e;
+    --darkest-red: #b00b13;
+    --lightest-orange: #fcede0;
+    --light-orange: #fc9849;
+    --normal-orange: #e76600;
+    --darkest-orange: #d74800;
+    --lightest-green: #e6f6f0;
+    --light-green: #1acd64;
+    --normal-green: #09a969;
+    --darkest-green: #059669;
+
+    /* ... */
+}
+
+@font-face {
+    font-family: "Light";
+    font-style: normal;
+    font-weight: normal;
+    src: url(./fonts/Prompt-Light.ttf);
+}
+
+@font-face {
+    font-family: "BdCondHe";
+    src: url(./fonts/Prompt-Bold.ttf);
+}
+
+@font-face {
+    font-family: "Regular";
+    src: url(./fonts/Prompt-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Medium";
+    src: url(./fonts/Prompt-Medium.ttf);
+}
+
+@font-face {
+    font-family: "SemiBold";
+    src: url(./fonts/Prompt-SemiBold.ttf);
+}
+
+.link-pynk {
+    color: var(--disabled-text) !important;
+    font-size: 16px !important;
+    font-family: SemiBoldPynk !important;
+}
+
+.link-pynk:hover {
+    color: var(--main-text) !important;
+}
+
+.link-pynk:focus {
+    color: var(--main-text) !important;
+}
+
+.nav-pynk li {
+    background-color: white;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    font-size: 16px;
+    margin-top: 0;
+}
+
+.information-box-row2 {
+    padding: 0;
+    background-color: #ffe2ee !important;
+    height: 56px;
+}
+
+.navbar-flex-center {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media only screen and (min-width: 577px) {
+    .user-line {
+        display: none !important;
+    }
+}
+
+
+@media only screen and (max-width: 540px) {
+    .bottom-searchRight {
+        margin-right: 5px !important;
+    }
+
+    .myUL {
+        margin-left: -20px;
+        margin-right: -20px;
+    }
+
+    .icon_web {
+        padding-left: 6px !important;
+    }
+
+    .maigeSm {
+        margin-top: 50px !important;
+    }
+
+    .iconCenter {
+        padding-left: 40% !important;
+        position: relative;
+        padding-top: 50px;
+        margin-left: -10px !important;
+    }
+
+    .high-impact {
+        position: absolute;
+        margin-left: -10px !important;
+        padding-top: 5px !important;
+    }
+
+    .register-image {
+        width: 100% !important;
+        z-index: 2 !important;
+        height: unset !important;
+        margin-top: -20px !important;
+        margin-left: 50px;
+    }
+
+    .studio-session {
+        height: 800px !important;
+        width: 100% !important;
+    }
+
+    .mask1 {
+        opacity: 0.4 !important;
+        width: 350px !important;
+        height: 350px !important;
+        margin-top: -50px !important;
+    }
+
+    .mask2 {
+        width: 280px !important;
+        height: 200px !important;
+    }
+
+    .food_supplementHead {
+        padding-top: 50px !important;
+        padding-left: 0px !important;
+    }
+
+    .information-box3 {
+        height: 85% !important;
+    }
+
+    .information-box4 {
+        height: 85% !important;
+    }
+
+    .marginTopMd5 {
+        margin-top: 10px;
+    }
+
+    .marginLeftRoutine {
+        margin-left: -30px;
+    }
+
+    .video-link2 {
+        font-size: 20px !important;
+    }
+
+    .rectangle14 {
+        margin-right: 20px;
+        margin-left: 0px !important;
+        margin-top: -15px;
+        border-bottom: 3px solid #4f4f4f;
+    }
+
+    .bottom-pinkLogin3,
+    .bottom-pinkLogin3:hover,
+    .bottom-pinkLogin3:focus {
+        background-color: #f8159d !important;
+        margin-top: -30px !important;
+        height: 70px;
+        width: 320px !important;
+        color: #ffffff !important;
+        margin-bottom: 50px;
+        border-radius: 40px;
+        font-size: 22px !important;
+    }
+
+    .bottom-pinkLogin2,
+    .bottom-pinkLogin2:hover,
+    .bottom-pinkLogin2:focus {
+        background-color: #ffffff !important;
+        height: 70px;
+        width: 320px !important;
+        color: #f8159d !important;
+        margin-bottom: 50px;
+        border-radius: 40px;
+        font-size: 22px !important;
+    }
+
+    .bottom-pinkLogin1,
+    .bottom-pinkLogin1:hover,
+    .bottom-pinkLogin1:focus {
+        background-color: #ffffff !important;
+        box-shadow: 0px 2px 12px 1px #c4c4c4;
+        margin-top: 10px !important;
+        height: 70px;
+        width: 320px !important;
+        border-color: #e25e96;
+        color: #f8159d !important;
+        margin-bottom: 50px;
+        border-radius: 40px;
+        font-size: 22px !important;
+    }
+
+    .win-540 {
+        display: inline !important;
+    }
+
+    .win-541 {
+        display: none !important;
+    }
+
+    .padding-leftRight2 {
+        padding-left: 10px !important;
+        padding-right: 20px !important;
+    }
+
+    .progress-text-start {
+        font-size: 16px !important;
+        color: #ffffff !important;
+    }
+
+    .text-end {
+        font-size: 20px !important;
+    }
+
+    .text-headWidth1 {
+        font-size: 28px !important;
+    }
+
+    .review-image {
+        margin-left: 5% !important;
+        margin-top: 32% !important;
+        width: 90% !important;
+    }
+
+    .containerli {
+        --bs-gutter-x: 1.5rem;
+        --bs-gutter-y: 0;
+        width: 100%;
+        padding-right: 20px;
+        padding-left: 0px !important;
+        margin-left: auto;
+        padding-top: 20px;
+    }
+
+    .form-check-reverse {
+        padding-right: 1.5em;
+        margin-left: -20px !important;
+        text-align: left !important;
+    }
+
+    .form-switch.form-check-reverse {
+        padding-right: 35px !important;
+    }
+
+    .challenge {
+        margin-top: -20px !important;
+        margin-left: -30px !important;
+    }
+
+    .chalLeft {
+        white-space: pre;
+        padding-left: -0px !important;
+    }
+
+    .vidLeft {
+        white-space: pre;
+        padding-left: 0px !important;
+    }
+
+    .box-challengeIn {
+        margin-left: -10px !important;
+        margin-right: -10px !important;
+    }
+
+    .emblem-box {
+        margin-left: -10px;
+        margin-right: -10px;
+    }
+
+    .emblem-box2 {
+        margin-left: -10px;
+        margin-right: -10px;
+    }
+
+    .circle-team {
+        left: 70% !important;
+    }
+
+    .current-position {
+        margin-left: -10px !important;
+        margin-right: -10px !important;
+    }
+
+    .current-position2 {
+        margin-left: -10px !important;
+        margin-right: -10px !important;
+    }
+
+    .border-line {
+        margin-left: 10% !important;
+    }
+
+    .border-line2 {
+        width: 80% !important;
+    }
+
+    .share-achievement {
+        /*     margin-top: 10px;
+      margin-bottom: 10px; */
+        float: left !important;
+        position: relative;
+    }
+
+    .box-playVdieo {
+        margin-top: 60px !important;
+    }
+
+    .box-paly1 {
+        height: 160px !important;
+    }
+
+    .box-proteinIn {
+        margin-top: -10px !important;
+        border: none !important;
+    }
+
+    .box-Line {
+        margin-left: -40px !important;
+        margin-right: -40px !important;
+    }
+
+    .navbarNav-ul {
+        margin-top: 12px;
+        background-color: #ffffff;
+        padding: 16px 16px 0px 16px !important;
+
+        padding-bottom: 16px !important;
+    }
+
+    .navbarNav-ul .nav-link:focus {
+        /*     margin-top: 16px; */
+
+        background-color: #fff8fb;
+        /*  padding-bottom: 16px !important; */
+    }
+}

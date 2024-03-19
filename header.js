@@ -5,8 +5,11 @@ import user_line from "./image/user-3-line.png";
 import ellipse24 from "./image/Ellipse24.png";
 import icon_exit from "./image/exit.png";
 import truck_line from "./image/truck-line.png";
+import close_line from "./image/close-line.png";
+import group from "./image/Group.png";
 import shopping_bag_line from "./image/shopping-bag-line.png";
 import Cookies from "js-cookie";
+import "./header.css";
 
 export default function Header(props) {
   let urlProd = false;
@@ -23,7 +26,7 @@ export default function Header(props) {
     console.log("handle OnUser Logout");
     window.location.href = urlPynk + "/home";
     // window.location.reload(true);
-    Cookies.set("loginUser",null);
+    Cookies.set("loginUser", null);
     // Cookies.set("loginUserWeb", null);
 
     if (document.getElementById("icon-google")) {
@@ -208,7 +211,7 @@ export default function Header(props) {
             </div>
           </div>
         </div>
-        {/*     {props.searchStatus && props.searchStatus === 0 ? (
+        {props.searchStatus && props.searchStatus === 0 ? (
           <div className="information-box-row2">
             <div className="navbar-flex-center user-line">
               {props && props.group_image ? (
@@ -244,25 +247,26 @@ export default function Header(props) {
             >
               <div className="navbar-nav">
                 {props.user && props.user.authorization === "admin" && (
-                  <a
-                    className="nav-link link-pynk"
-                     onClick={() =>
+                  <>
+                    <a
+                      className="nav-link link-pynk"
+                      onClick={() =>
                         this.props && props.history.push("/products_management")
                       }
-                  >
-                    จัดการสินค้า
-                  </a>
-                )}
-                {props.user && props.user.authorization === "admin" && (
-                  <a
-                    className="nav-link link-pynk"
-                     onClick={() =>
+                    >
+                      จัดการสินค้า
+                    </a>
+                    <a
+                      className="nav-link link-pynk"
+                      onClick={() =>
                         this.props && props.history.push("/contents_management")
                       }
-                  >
-                    จัดการบทความ
-                  </a>
+                    >
+                      จัดการบทความ
+                    </a>
+                  </>
                 )}
+
                 <a
                   className="nav-link  link-pynk active2"
                   href="https://platform.bebefitroutine.com"
@@ -278,7 +282,6 @@ export default function Header(props) {
                   Stay Fit
                 </a>
 
-             
                 <a
                   className="nav-link link-pynk"
                   onClick={() => this.handleClickLogin("BetterShape")}
@@ -293,14 +296,55 @@ export default function Header(props) {
                 >
                   บทความ
                 </a>
-             
               </div>
             </div>
           </div>
         ) : (
-          <></>
-        
-        )} */}
+          <>
+            <div className="information-box-row2">
+              <div className="navbar-flex-center">
+                <div
+                  className="collapse navbar-collapse navbarNav-ul"
+                  id="navbarNav"
+                >
+                  <div className="navbar-nav">
+                    <a
+                      className="nav-link  link-pynk active2"
+                      href="https://platform.bebefitroutine.com"
+                      target="_blank"
+                    >
+                      Online Training
+                    </a>
+                    <a
+                      className="nav-link link-pynk"
+                      href="https://fit.bebefitroutine.com"
+                      target="_blank"
+                    >
+                      Stay Fit
+                    </a>
+
+                    <a
+                      className="nav-link link-pynk"
+                      onClick={() => this.handleClickLogin("BetterShape")}
+                    >
+                      Better Shape
+                    </a>
+
+                    <a
+                      className="nav-link link-pynk"
+                      // href="/#"
+                      onClick={() =>
+                        this.props && props.history.push("/content")
+                      }
+                    >
+                      บทความ
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </>
+        )}
       </nav>
     </div>
   );
