@@ -1,0 +1,25 @@
+{
+  "name": "pynk_header_footer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "footer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://th-thanet@bitbucket.org/p4ftech/pynk_header_footer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://bitbucket.org/p4ftech/pynk_header_footer/issues"
+  },
+  "homepage": "https://bitbucket.org/p4ftech/pynk_header_footer#readme",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-google-login": "^5.2.2"
+  }
+}

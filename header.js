@@ -1,7 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import logo from "./image/logo.png";
+import user_line from "./image/user-3-line.png";
+import ellipse24 from "./image/Ellipse24.png";
+import icon_exit from "./image/exit.png";
+import truck_line from "./image/truck-line.png";
+import shopping_bag_line from "./image/shopping-bag-line.png";
+import Cookies from "js-cookie";
 
 export default function Header(props) {
+  let urlProd = false;
+  const urlPynk = urlProd
+    ? "https://staging.pynk.co/#"
+    : "http://localhost:3000/#";
+
+  const handleLogin = () => {
+    window.location.href = urlPynk + "/login";
+  };
+
+  const handleOnUserLogout = () => {
+    console.log("4444");
+    /*     Cookies.set("loginUser", null);
+    Cookies.set("loginUserWeb", null); */
+  };
   return (
     <div className="navbar-pynk">
       <nav className="navbar navbar-expand-sm bg-light information-nav fixed-top">
@@ -37,7 +58,7 @@ export default function Header(props) {
                 className="truck-line-icon user-line"
                 alt="vector"
               />
-              {this.props.user ? (
+              {props.user && props.user ? (
                 <div className="nav-pynk">
                   <div class="dropdown">
                     <div
@@ -51,7 +72,7 @@ export default function Header(props) {
                         className="nav-ellipse24"
                         alt="vector"
                       />
-                      {this.props.user.email}
+                      {props && props.user.email}
                     </div>
                     <ul class="dropdown-menu">
                       <li>
@@ -67,7 +88,7 @@ export default function Header(props) {
                       <li>
                         <a
                           class="dropdown-item"
-                          onClick={() => this.onUserLogout()}
+                          onClick={() => handleOnUserLogout()}
                         >
                           <img
                             src={icon_exit}
@@ -79,12 +100,11 @@ export default function Header(props) {
                       </li>
                     </ul>
                   </div>
-                  {/* <div className="pointer" onClick={() => this.props.logout()}>
+                  {/* <div className="pointer" onClick={() => this.props && props.logout()}>
                   ออกจากระบบ
                 </div> */}
                 </div>
-              ) : this.props.googleProfile &&
-                this.props.googleProfile.profile ? (
+              ) : props.googleProfile && props.googleProfile.profile ? (
                 <div className="nav-pynk">
                   <div class="dropdown">
                     <div
@@ -98,7 +118,7 @@ export default function Header(props) {
                         className="nav-ellipse24"
                         alt="vector"
                       />
-                      {this.props.googleProfile.profile.email}
+                      {props.googleProfile && props.googleProfile.profile.email}
                     </div>
                     <ul class="dropdown-menu">
                       <li>
@@ -113,9 +133,17 @@ export default function Header(props) {
                         </Link>
                       </li>
                       <li>
-                        <div class="google_style">
-                          <GoogleLoginComponent />
-                        </div>
+                        <a
+                          class="dropdown-item"
+                          onClick={() => handleOnUserLogout()}
+                        >
+                          <img
+                            src={icon_exit}
+                            className="icon-edit cursor-pointer"
+                            alt="icon_exit"
+                          />
+                          ออกจากระบบ
+                        </a>
                       </li>
                     </ul>
                   </div>
@@ -123,7 +151,7 @@ export default function Header(props) {
               ) : (
                 <button
                   className="nav-link nav-linkHead2 pointer bold  display-none"
-                  onClick={() => this.props.history.push("/login")}
+                  onClick={handleLogin}
                 >
                   เข้าสู่ระบบ/ลงทะเบียน
                 </button>
@@ -132,8 +160,6 @@ export default function Header(props) {
               <h2
                 style={{
                   color: "#BCCCD6",
-                  /*  marginRight: 16, */
-                  /*  marginLeft: 16, */
                   fontWeight: 10,
                   height: 30,
                 }}
@@ -142,7 +168,9 @@ export default function Header(props) {
               </h2>
               <div
                 className="d-flex justify-content-center align-items-center cursor-pointer"
-                onClick={() => this.props.history.push("/order_tracking")}
+                onClick={() =>
+                  this.props && props.history.push("/order_tracking")
+                }
               >
                 <img
                   src={truck_line}
@@ -172,10 +200,10 @@ export default function Header(props) {
             </div>
           </div>
         </div>
-        {searchStatus === 0 ? (
+        {/*     {props.searchStatus && props.searchStatus === 0 ? (
           <div className="information-box-row2">
             <div className="navbar-flex-center user-line">
-              {group_image ? (
+              {props && props.group_image ? (
                 <img
                   src={close_line}
                   alt="vector"
@@ -207,22 +235,22 @@ export default function Header(props) {
               id="navbarNav"
             >
               <div className="navbar-nav">
-                {user && user.authorization === "admin" && (
+                {props.user && props.user.authorization === "admin" && (
                   <a
                     className="nav-link link-pynk"
-                    onClick={() =>
-                      this.props.history.push("/products_management")
-                    }
+                     onClick={() =>
+                        this.props && props.history.push("/products_management")
+                      }
                   >
                     จัดการสินค้า
                   </a>
                 )}
-                {user && user.authorization === "admin" && (
+                {props.user && props.user.authorization === "admin" && (
                   <a
                     className="nav-link link-pynk"
-                    onClick={() =>
-                      this.props.history.push("/contents_management")
-                    }
+                     onClick={() =>
+                        this.props && props.history.push("/contents_management")
+                      }
                   >
                     จัดการบทความ
                   </a>
@@ -242,19 +270,7 @@ export default function Header(props) {
                   Stay Fit
                 </a>
 
-                {/*   <a
-                  className="nav-link link-pynk"
-                  href="/#"
-                  onClick={() => this.props.history.push("/")}
-                >
-                  Exclusive Coaching
-                </a> */}
-                {/*    <a
-                  className="nav-link link-pynk"
-                  onClick={() => this.props.history.push("/shop")}
-                >
-                  ร้านค้า
-                </a> */}
+             
                 <a
                   className="nav-link link-pynk"
                   onClick={() => this.handleClickLogin("BetterShape")}
@@ -265,40 +281,18 @@ export default function Header(props) {
                 <a
                   className="nav-link link-pynk"
                   // href="/#"
-                  onClick={() => this.props.history.push("/content")}
+                  onClick={() => this.props && props.history.push("/content")}
                 >
                   บทความ
                 </a>
-                {/* <a class="nav-link" href="#">
-                  Disabled
-                </a> */}
+             
               </div>
             </div>
           </div>
         ) : (
           <></>
-          /*         <div className="information-box-row3">
-            <div className="custom-input2">
-              <img
-                src={search_line}
-                className="search-img-icon"
-                alt="vector"
-              />
-              <input
-                type="text"
-                className="form-control form-search2"
-                placeholder="ค้นหาสินค้า"
-              />
-            </div>
-           
-            <img
-              src={close_line}
-              className="close_line-icon"
-              onClick={() => this.clikSearchStatus(0)}
-              alt="vector"
-            />
-          </div>  */
-        )}
+        
+        )} */}
       </nav>
     </div>
   );
