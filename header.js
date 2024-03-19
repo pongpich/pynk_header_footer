@@ -22,8 +22,8 @@ export default function Header(props) {
   const handleOnUserLogout = () => {
     console.log("handle OnUser Logout");
     window.location.href = urlPynk + "/home";
-    window.location.reload(true);
-    Cookies.remove("loginUser");
+    // window.location.reload(true);
+    Cookies.set("loginUser",null);
     // Cookies.set("loginUserWeb", null);
   };
 
