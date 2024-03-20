@@ -35,6 +35,34 @@ export default function PynkHeader(props) {
     }
   };
 
+  const handleClickLogin = (event) => {
+    let email = this.props.user && this.props.user.email;
+    let googleProfile =
+      this.props.googleProfile && this.props.googleProfile.profile.email;
+
+    let clickMail = email ? email : googleProfile;
+
+    fetch(`https://api.planforfit.com/preem/login?email=${clickMail}`)
+      .then((response) => {
+        const res = response.data.results;
+        if (res.message == "success") {
+          const params = {
+            key1: res.user,
+          };
+          const encodedParams = btoa(JSON.stringify(params));
+          const baseUrl = `http://localhost:3001/#/videolist?encodedParams=${encodedParams}`;
+          //window.location.href = baseUrl;
+          window.open(baseUrl, "_blank");
+        } else {
+          console.log("ไม่มี");
+        }
+      })
+      .catch((error) => {
+        // ดำเนินการเมื่อเกิดข้อผิดพลาดในการเรียก API
+        console.error("Error fetching data:", error);
+      });
+  };
+
   return (
     <div className="navbar-pynk">
       <nav className="navbar-expand-sm bg-light information-nav fixed-top">
