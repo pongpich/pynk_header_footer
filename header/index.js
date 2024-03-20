@@ -19,6 +19,10 @@ export default function PynkHeader(props) {
     ? "https://staging.pynk.co/#"
     : "http://localhost:3000/#";
 
+  const urlPreem = urlProd
+    ? "https://preemworkout.pynk.co/#"
+    : "http://localhost:3001/#";
+
   const handleLogin = () => {
     window.location.href = urlPynk + "/login";
   };
@@ -36,31 +40,33 @@ export default function PynkHeader(props) {
   };
 
   const handleClickLogin = (event) => {
-    let email = this.props.user && this.props.user.email;
-    let googleProfile =
-      this.props.googleProfile && this.props.googleProfile.profile.email;
 
-    let clickMail = email ? email : googleProfile;
+    window.location.href = urlPreem + "/videolist";
 
-    fetch(`https://api.planforfit.com/preem/login?email=${clickMail}`)
-      .then((response) => {
-        const res = response.data.results;
-        if (res.message == "success") {
-          const params = {
-            key1: res.user,
-          };
-          const encodedParams = btoa(JSON.stringify(params));
-          const baseUrl = `http://localhost:3001/#/videolist?encodedParams=${encodedParams}`;
-          //window.location.href = baseUrl;
-          window.open(baseUrl, "_blank");
-        } else {
-          console.log("ไม่มี");
-        }
-      })
-      .catch((error) => {
-        // ดำเนินการเมื่อเกิดข้อผิดพลาดในการเรียก API
-        console.error("Error fetching data:", error);
-      });
+
+
+
+
+    // const dataCookiesUser = "sorawit@gmail.com";
+
+    // fetch(`https://api.planforfit.com/preem/login?email=${dataCookiesUser}`)
+    //   .then((response) => {
+    //     console.log("response", response);
+    //     return response.json(); // Parse response JSON
+    //   })
+    //   .then((data) => {
+    //     console.log("data", data); // Log parsed data
+    //     if (data.results.message == "success") {
+    //       Cookies.set("loginUserWeb", JSON.stringify(data.results.user));
+    //       window.location.href = urlPreem + "/videolist";
+    //     } else {
+    //       window.location.href = urlPynk + "/sale-page?link=bettershape";
+    //       console.log("ไม่มี");
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error fetching data:", error);
+    //   });
   };
 
   return (
@@ -321,10 +327,7 @@ export default function PynkHeader(props) {
                 Stay Fit
               </a>
 
-              <a
-                className="nav-link link-pynk"
-                // onClick={() => this.handleClickLogin("BetterShape")}
-              >
+              <a className="nav-link link-pynk" onClick={handleClickLogin}>
                 Better Shape
               </a>
 
