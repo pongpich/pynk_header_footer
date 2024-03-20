@@ -12,19 +12,7 @@ import Cookies from "js-cookie";
 import "./header.css";
 
 export default function PynkHeader(props) {
-  const [searchStatus, setSearchStatus] = useState(0);
   const [groupImage, setGroupImage] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-  useEffect(() => {
-    // window.addEventListener("resize", windowWidth);
-    // if (windowWidth && windowWidth > 576) {
-    //   setSearchStatus(0);
-    // }
-    // return () => {
-    //   window.removeEventListener("resize", windowWidth);
-    // };
-  }, []);
 
   let urlProd = false;
   const urlPynk = urlProd
@@ -39,13 +27,19 @@ export default function PynkHeader(props) {
     console.log("handle OnUser Logout");
     window.location.href = urlPynk + "/home";
     // window.location.reload(true);
-    Cookies.set("loginUser", null);
-    // Cookies.set("loginUserWeb", null);
+    Cookies.remove("loginUser");
+    Cookies.remove("loginUserWeb");
 
     if (document.getElementById("icon-google")) {
       document.getElementById("icon-google").click();
     }
   };
+  console.log(
+    "props",
+    props.user &&
+      props.user &&
+      (props.googleProfile || props.googleProfile.profile)
+  );
   return (
     <div className="navbar-pynk">
       <nav className="navbar-expand-sm bg-light information-nav fixed-top">
@@ -75,12 +69,18 @@ export default function PynkHeader(props) {
           </div>
           <div>
             <div className="flex-container">
-              <img
-                src={user_line}
-                onClick={() => this.showMinus2()}
-                className="truck-line-icon user-line"
-                alt="vector"
-              />
+              {props.user &&
+                !props.user &&
+                props.googleProfile &&
+                !props.googleProfile.profile &&
+                  <img
+                    src={user_line}
+                    onClick={() => this.showMinus2()}
+                    className="truck-line-icon user-line"
+                    alt="vector"
+                  />
+                }
+
               {props.user && props.user ? (
                 <div className="nav-pynk">
                   <div class="dropdown">
@@ -89,13 +89,16 @@ export default function PynkHeader(props) {
                       type="button"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
+                      style={{ marginTop: "-10px", marginRight: "-16px" }}
                     >
                       <img
                         src={ellipse24}
                         className="nav-ellipse24"
                         alt="vector"
                       />
-                      {props && props.user.email}
+                      <span className="d-none d-md-inline">
+                        {props && props.user.email}
+                      </span>
                     </div>
                     <ul class="dropdown-menu">
                       <li>
@@ -131,17 +134,21 @@ export default function PynkHeader(props) {
                 <div className="nav-pynk">
                   <div class="dropdown">
                     <div
-                      class="btn  dropdown-toggle"
+                      class="btn dropdown-toggle"
                       type="button"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
+                      style={{ marginTop: "-10px", marginRight: "-16px" }}
                     >
                       <img
                         src={ellipse24}
                         className="nav-ellipse24"
                         alt="vector"
                       />
-                      {props.googleProfile && props.googleProfile.profile.email}
+                      <span className="d-none d-md-inline">
+                        {props.googleProfile &&
+                          props.googleProfile.profile.email}
+                      </span>
                     </div>
                     <ul class="dropdown-menu">
                       <li>
@@ -260,7 +267,7 @@ export default function PynkHeader(props) {
           </div>
 
           <div className="collapse navbar-collapse navbarNav-ul" id="navbarNav">
-            <div className="navbar-nav">
+            <div className="navbar-nav w-100 d-flex gap-2 gap-md-4">
               {/* <a
                 className="nav-link link-pynk"
                 onClick={() =>
