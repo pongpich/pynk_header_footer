@@ -67,7 +67,7 @@ export default function PynkHeader(props) {
               {!props.user && !props?.googleProfile?.profile && (
                 <img
                   src={user_line}
-                  onClick={() => this.showMinus2()}
+                  onClick={handleLogin}
                   className="truck-line-icon user-line"
                   alt="vector"
                 />
