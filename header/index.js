@@ -34,12 +34,7 @@ export default function PynkHeader(props) {
       document.getElementById("icon-google").click();
     }
   };
-  console.log(
-    "props",
-    props.user &&
-      props.user &&
-      (props.googleProfile || props.googleProfile.profile)
-  );
+
   return (
     <div className="navbar-pynk">
       <nav className="navbar-expand-sm bg-light information-nav fixed-top">
@@ -69,17 +64,14 @@ export default function PynkHeader(props) {
           </div>
           <div>
             <div className="flex-container">
-              {props.user &&
-                !props.user &&
-                props.googleProfile &&
-                !props.googleProfile.profile &&
-                  <img
-                    src={user_line}
-                    onClick={() => this.showMinus2()}
-                    className="truck-line-icon user-line"
-                    alt="vector"
-                  />
-                }
+              {!props.user && !props?.googleProfile?.profile && (
+                <img
+                  src={user_line}
+                  onClick={() => this.showMinus2()}
+                  className="truck-line-icon user-line"
+                  alt="vector"
+                />
+              )}
 
               {props.user && props.user ? (
                 <div className="nav-pynk">
