@@ -30,40 +30,15 @@ export default function PynkHeader(props) {
   const handleOnUserLogout = () => {
     console.log("handle OnUser Logout");
     window.location.href = urlPynk + "/home";
-    // window.location.reload(true);
     Cookies.remove("loginUser");
-    Cookies.remove("loginUserWeb");
 
     if (document.getElementById("icon-google")) {
       document.getElementById("icon-google").click();
     }
   };
 
-  console.log("props", props);
-
   const handleClickLogin = (event) => {
-    window.open(urlPreem + "/videolist");
-    /* window.location.href = urlPreem + "/videolist";
-     */
-    // const dataCookiesUser = "sorawit@gmail.com";
-    // fetch(`https://api.planforfit.com/preem/login?email=${dataCookiesUser}`)
-    //   .then((response) => {
-    //     console.log("response", response);
-    //     return response.json(); // Parse response JSON
-    //   })
-    //   .then((data) => {
-    //     console.log("data", data); // Log parsed data
-    //     if (data.results.message == "success") {
-    //       Cookies.set("loginUserWeb", JSON.stringify(data.results.user));
-    //       window.location.href = urlPreem + "/videolist";
-    //     } else {
-    //       window.location.href = urlPynk + "/sale-page?link=bettershape";
-    //       console.log("ไม่มี");
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error fetching data:", error);
-    //   });
+    window.location.href = urlPreem + "/videolist";
   };
 
   const dataCookiesLoginUser = Cookies.get("loginUser");
