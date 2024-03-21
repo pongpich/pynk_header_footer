@@ -16,11 +16,11 @@ export default function PynkHeader(props) {
 
   let urlProd = true;
   const urlPynk = urlProd
-    ? "https://staging.pynk.co/#"
+    ? "https://staging.pynk.pynk.co/#"
     : "http://localhost:3000/#";
 
   const urlPreem = urlProd
-    ? "https://staging.preemworkout.pynk.co/#"
+    ? "https://staging.preemworkout.pynk.co"
     : "http://localhost:3001/#";
 
   const handleLogin = () => {
