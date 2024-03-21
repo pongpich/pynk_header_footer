@@ -13,6 +13,7 @@ import "./header.css";
 
 export default function PynkHeader(props) {
   const [groupImage, setGroupImage] = useState(false);
+  const dataCookiesLoginUser = Cookies.get("loginUser");
 
   let urlProd = true;
   const urlPynk = urlProd
@@ -38,14 +39,14 @@ export default function PynkHeader(props) {
   };
 
   const handleClickLogin = (event) => {
-    window.location.href = urlPreem + "/videolist";
+    const encodedParams = btoa(JSON.stringify(dataCookiesLoginUser));
+    window.location.href = urlPreem + `/videolist?encodedParams=${encodedParams}`;
   };
 
   const handleBackHome = () => {
     window.location.href = urlPynk + "/Home";
   };
 
-  const dataCookiesLoginUser = Cookies.get("loginUser");
 
   return (
     <div className="navbar-pynk">
