@@ -14,7 +14,7 @@ import "./header.css";
 export default function PynkHeader(props) {
   const [groupImage, setGroupImage] = useState(false);
 
-  let urlProd = false;
+  let urlProd = true;
   const urlPynk = urlProd
     ? "https://staging.pynk.co/#"
     : "http://localhost:3000/#";
