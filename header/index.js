@@ -15,7 +15,7 @@ export default function PynkHeader(props) {
   const [groupImage, setGroupImage] = useState(false);
   const dataCookiesLoginUser = Cookies.get("loginUser");
 
-  let urlProd = false;
+  let urlProd = true;
   const urlPynk = urlProd
     ? "https://staging.pynk.co/#"
     : "http://localhost:3000/#";
