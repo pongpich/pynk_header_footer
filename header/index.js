@@ -31,7 +31,8 @@ export default function PynkHeader(props) {
   const handleOnUserLogout = () => {
     console.log("handle OnUser Logout");
     window.location.href = urlPynk + "/home";
-    Cookies.remove("loginUser");
+    // Cookies.remove("loginUser");
+    Cookies.remove("loginUser", { domain: "pynk.co", path: "/" });
 
     if (document.getElementById("icon-google")) {
       document.getElementById("icon-google").click();
@@ -40,13 +41,13 @@ export default function PynkHeader(props) {
 
   const handleClickLogin = (event) => {
     const encodedParams = btoa(JSON.stringify(dataCookiesLoginUser));
-    window.location.href = urlPreem + `/videolist?encodedParams=${encodedParams}`;
+    window.location.href =
+      urlPreem + `/videolist?encodedParams=${encodedParams}`;
   };
 
   const handleBackHome = () => {
     window.location.href = urlPynk + "/Home";
   };
-
 
   return (
     <div className="navbar-pynk">
