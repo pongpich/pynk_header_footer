@@ -115,10 +115,14 @@
   padding: 12px !important;
   background-color: #4a4a4a;
 }
+
 .navbarNav-ul-collpase {
   padding: 12px !important;
   background-color: #fff8fb;
 }
-/* .navbarNav-ul .nav-link:focus {
-  background-color: #fff8fb;
-} */
+
+.nav-ellipse24 {
+  width: 24px;
+  height: auto;
+  margin-right: 8px;
+}
