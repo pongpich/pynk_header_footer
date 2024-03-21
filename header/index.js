@@ -16,7 +16,7 @@ export default function PynkHeader(props) {
 
   let urlProd = true;
   const urlPynk = urlProd
-    ? "https://staging.pynk.pynk.co/#"
+    ? "https://staging.pynk.co/#"
     : "http://localhost:3000/#";
 
   const urlPreem = urlProd
