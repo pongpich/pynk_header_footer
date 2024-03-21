@@ -121,7 +121,7 @@ export default function PynkHeader(props) {
                         className="nav-ellipse24"
                         alt="vector"
                       />
-                      <span className="d-none d-md-inline">
+                      <span className="d-none d-md-inline cook-email">
                         {dataCookiesLoginUser}
                       </span>
                     </div>

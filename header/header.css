@@ -1,3 +1,31 @@
+@font-face {
+  font-family: "Light";
+  font-style: normal;
+  font-weight: normal;
+  src: url(./fonts/Prompt-Light.ttf);
+}
+
+@font-face {
+  font-family: "BdCondHe";
+  src: url(./fonts/Prompt-Bold.ttf);
+}
+
+@font-face {
+  font-family: "Regular";
+  src: url(./fonts/Prompt-Regular.ttf);
+}
+
+@font-face {
+  font-family: "Medium";
+  src: url(./fonts/Prompt-Medium.ttf);
+}
+
+@font-face {
+  font-family: "SemiBold";
+  src: url(./fonts/Prompt-SemiBold.ttf);
+}
+
+
 .navbar-pynk {
   margin-bottom: 145px;
 }
@@ -125,4 +153,10 @@
   width: 24px;
   height: auto;
   margin-right: 8px;
+}
+
+.cook-email {
+  font-size: 12px !important;
+  font-family: SemiBold !important;
+
 }
