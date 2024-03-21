@@ -39,16 +39,13 @@ export default function PynkHeader(props) {
     }
   };
 
+  console.log("props", props);
+
   const handleClickLogin = (event) => {
-
-    window.location.href = urlPreem + "/videolist";
-
-
-
-
-
+    window.open(urlPreem + "/videolist");
+    /* window.location.href = urlPreem + "/videolist";
+     */
     // const dataCookiesUser = "sorawit@gmail.com";
-
     // fetch(`https://api.planforfit.com/preem/login?email=${dataCookiesUser}`)
     //   .then((response) => {
     //     console.log("response", response);
@@ -68,6 +65,8 @@ export default function PynkHeader(props) {
     //     console.error("Error fetching data:", error);
     //   });
   };
+
+  const dataCookiesLoginUser = Cookies.get("loginUser");
 
   return (
     <div className="navbar-pynk">
@@ -107,7 +106,7 @@ export default function PynkHeader(props) {
                 />
               )}
 
-              {props.user && props.user ? (
+              {dataCookiesLoginUser ? (
                 <div className="nav-pynk">
                   <div class="dropdown">
                     <div
@@ -123,7 +122,7 @@ export default function PynkHeader(props) {
                         alt="vector"
                       />
                       <span className="d-none d-md-inline">
-                        {props && props.user.email}
+                        {dataCookiesLoginUser}
                       </span>
                     </div>
                     <ul class="dropdown-menu">
@@ -155,54 +154,6 @@ export default function PynkHeader(props) {
                   {/* <div className="pointer" onClick={() => this.props && props.logout()}>
                   ออกจากระบบ
                 </div> */}
-                </div>
-              ) : props.googleProfile && props.googleProfile.profile ? (
-                <div className="nav-pynk">
-                  <div class="dropdown">
-                    <div
-                      class="btn dropdown-toggle"
-                      type="button"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                      style={{ marginTop: "-10px", marginRight: "-16px" }}
-                    >
-                      <img
-                        src={ellipse24}
-                        className="nav-ellipse24"
-                        alt="vector"
-                      />
-                      <span className="d-none d-md-inline">
-                        {props.googleProfile &&
-                          props.googleProfile.profile.email}
-                      </span>
-                    </div>
-                    <ul class="dropdown-menu">
-                      <li>
-                        <Link class="dropdown-item" to="profile-pynk">
-                          <img
-                            src={icon_exit}
-                            alt="icon_exit"
-                            className="icon-edit cursor-pointer"
-                            style={{ marginLeft: "2px" }}
-                          />
-                          profile
-                        </Link>
-                      </li>
-                      <li>
-                        <a
-                          class="dropdown-item"
-                          onClick={() => handleOnUserLogout()}
-                        >
-                          <img
-                            src={icon_exit}
-                            className="icon-edit cursor-pointer"
-                            alt="icon_exit"
-                          />
-                          ออกจากระบบ
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
                 </div>
               ) : (
                 <button
