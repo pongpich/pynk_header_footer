@@ -41,6 +41,10 @@ export default function PynkHeader(props) {
     window.location.href = urlPreem + "/videolist";
   };
 
+  const handleBackHome = () => {
+    window.location.href = urlPynk + "/Home";
+  };
+
   const dataCookiesLoginUser = Cookies.get("loginUser");
 
   return (
@@ -48,9 +52,9 @@ export default function PynkHeader(props) {
       <nav className="navbar-expand-sm bg-light information-nav fixed-top">
         <div className="information-box">
           <div className="flex-container">
-            <Link to="/">
+            <a onClick={handleBackHome}>
               <img src={logo} alt="vector" />
-            </Link>
+            </a>
             {/*       <div className="custom-input ">
               <img
                 src={search_line}
