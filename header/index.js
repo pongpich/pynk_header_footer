@@ -20,7 +20,7 @@ export default function PynkHeader(props) {
     : "http://localhost:3000/#";
 
   const urlPreem = urlProd
-    ? "https://preemworkout.pynk.co/#"
+    ? "https://staging.preemworkout.pynk.co/#"
     : "http://localhost:3001/#";
 
   const handleLogin = () => {
