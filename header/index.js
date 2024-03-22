@@ -31,7 +31,6 @@ export default function PynkHeader(props) {
   const handleOnUserLogout = () => {
     console.log("handle OnUser Logout");
     window.location.href = urlPynk + "/home";
-    // Cookies.remove("loginUser");
     Cookies.remove("loginUser", { domain: urlCookieLoginWeb, path: "/" });
 
     if (document.getElementById("icon-google")) {
@@ -39,10 +38,46 @@ export default function PynkHeader(props) {
     }
   };
 
-  const handleClickLogin = (event) => {
-    const encodedParams = btoa(JSON.stringify(dataCookiesLoginUser));
-    window.location.href =
-      urlPreem + `/videolist?encodedParams=${encodedParams}`;
+  const handleClickLogin = async (event) => {
+    const checkMail = Cookies.get("loginUser", {
+      domain: urlCookieLoginWeb,
+      path: "/",
+    });
+    const urlBetter = "https://staging.pynk.co/#/sale-page?link=bettershape";
+    // const urlBetter = "http://localhost:3000/#/sale-page?link=bettershape";
+
+    const response = await fetch(
+      `https://api.planforfit.com/preem/login?email=${checkMail}`
+    );
+    const data = await response.json();
+    console.log("data", data);
+    if (data.results.message == "success") {
+      const encodedParams = btoa(JSON.stringify(dataCookiesLoginUser));
+      window.location.href =
+        urlPreem + `/videolist?encodedParams=${encodedParams}`;
+    } else {
+      window.location.href = urlBetter;
+    }
+    // fetch(`https://api.planforfit.com/preem/login?email=${checkMail}`)
+    //   .then((res) => {
+    //     console.log('res', res)
+    //   })
+    //   .then((response) => {
+    //     const res = response.data.results;
+    //     console.log("data", response);
+
+    //     if (res.message == "success") {
+    //       console.log("data", response);
+    //       const encodedParams = btoa(JSON.stringify(dataCookiesLoginUser));
+    //       window.location.href =
+    //         urlPreem + `/videolist?encodedParams=${encodedParams}`;
+    //     } else {
+    //       window.location.href = urlBetter;
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     return err;
+    //   });
   };
 
   const handleBackHome = () => {
