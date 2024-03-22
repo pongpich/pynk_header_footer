@@ -19,17 +19,22 @@ export default function PynkHeader(props) {
     domain: urlCookieLoginWeb,
     path: "/",
   });
+  const urlPynkBase = "https://staging.pynk.co/#";
+  const localHostBase = "http://localhost:3000/#";
+  
+  const gotoContent = isLocalHost
+    ? urlPynkBase + "/content"
+    : localHostBase + "/content";
+
   const urlBetterHome = isLocalHost
-    ? "https://staging.pynk.co/#/sale-page?link=bettershape"
-    : "http://localhost:3000/#/sale-page?link=bettershape";
+    ? urlPynkBase + "/sale-page?link=bettershape"
+    : localHostBase + "/sale-page?link=bettershape";
 
   const urlCarrotHome = isLocalHost
-    ? "https://staging.carrotworkout.pynk.co/#/sale-page?link=getfit"
-    : "http://localhost:3000/#/sale-page?link=getfit";
+    ? urlPynkBase + "/sale-page?link=getfit"
+    : localHostBase + "/sale-page?link=getfit";
 
-  const urlPynkProd = isLocalHost
-    ? "https://staging.pynk.co/#"
-    : "http://localhost:3000/#";
+  const urlPynkProd = isLocalHost ? urlPynkBase : localHostBase;
 
   const urlPreemProd = isLocalHost
     ? "https://staging.preemworkout.pynk.co/#"
@@ -286,7 +291,7 @@ export default function PynkHeader(props) {
                 จัดการบทความ
               </a> */}
 
-              <a
+              {/* <a
                 className="nav-link  link-pynk active2"
                 href="https://platform.bebefitroutine.com"
                 target="_blank"
@@ -299,7 +304,7 @@ export default function PynkHeader(props) {
                 target="_blank"
               >
                 Stay Fit
-              </a>
+              </a> */}
 
               <a className="nav-link link-pynk" onClick={handleClickLoginPreem}>
                 Better Shape
@@ -314,7 +319,7 @@ export default function PynkHeader(props) {
 
               <a
                 className="nav-link link-pynk"
-                // href="/#"
+                href={gotoContent}
                 // onClick={() => this.props && props.history.push("/content")}
               >
                 บทความ
