@@ -14,8 +14,8 @@ import "./header.css";
 export default function PynkHeader(props) {
   const [groupImage, setGroupImage] = useState(false);
   const dataCookiesLoginUser = Cookies.get("loginUser");
-
-  let urlProd = false;
+  const urlCookieLoginWeb = true ? "pynk.co" : "localhost";
+  let urlProd = true;
   const urlPynk = urlProd
     ? "https://staging.pynk.co/#"
     : "http://localhost:3000/#";
@@ -32,7 +32,7 @@ export default function PynkHeader(props) {
     console.log("handle OnUser Logout");
     window.location.href = urlPynk + "/home";
     // Cookies.remove("loginUser");
-    Cookies.remove("loginUser", { domain: "pynk.co", path: "/" });
+    Cookies.remove("loginUser", { domain: urlCookieLoginWeb, path: "/" });
 
     if (document.getElementById("icon-google")) {
       document.getElementById("icon-google").click();
@@ -108,7 +108,10 @@ export default function PynkHeader(props) {
                     </div>
                     <ul class="dropdown-menu">
                       <li>
-                        <Link class="dropdown-item" to="profile-pynk">
+                        <Link
+                          class="dropdown-item color_link"
+                          to="profile-pynk"
+                        >
                           <img
                             src={icon_exit}
                             className="icon-edit cursor-pointer"
@@ -119,12 +122,13 @@ export default function PynkHeader(props) {
                       </li>
                       <li>
                         <a
-                          class="dropdown-item"
+                          class="dropdown-item color_link"
                           onClick={() => handleOnUserLogout()}
+                          // style={{ cursor: "pointer",  }}
                         >
                           <img
                             src={icon_exit}
-                            className="icon-edit cursor-pointer"
+                            className="icon-edit"
                             alt="icon_exit"
                           />
                           ออกจากระบบ

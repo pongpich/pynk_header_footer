@@ -25,7 +25,6 @@
   src: url(../fonts/Prompt-SemiBold.ttf);
 }
 
-
 .navbar-pynk {
   margin-bottom: 145px;
 }
@@ -124,6 +123,7 @@
 .icon-edit {
   width: 25px !important;
   padding-right: 5px;
+  cursor: pointer !important;
 }
 
 .google_style {
@@ -158,5 +158,13 @@
 .cook-email {
   font-size: 12px !important;
   font-family: SemiBold !important;
+}
 
+.color_link {
+  cursor: pointer;
+  /* background-color: #e9ecef; */
+}
+.color_link:hover {
+  /* background-color: #e9ecef; */
+  color: #e25e96 !important;
 }
