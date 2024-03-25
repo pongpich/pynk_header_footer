@@ -21,10 +21,14 @@ export default function PynkHeader(props) {
   });
   const urlPynkBase = "https://staging.pynk.co/#";
   const localHostBase = "http://localhost:3000/#";
-  
+
   const gotoContent = isLocalHost
     ? urlPynkBase + "/content"
     : localHostBase + "/content";
+
+  const gotoProfile = isLocalHost
+    ? urlPynkBase + "/profile-pynk"
+    : localHostBase + "/profile-pynk";
 
   const urlBetterHome = isLocalHost
     ? urlPynkBase + "/sale-page?link=bettershape"
@@ -151,9 +155,9 @@ export default function PynkHeader(props) {
                     </div>
                     <ul class="dropdown-menu">
                       <li>
-                        <Link
+                        <a
                           class="dropdown-item color_link"
-                          to="profile-pynk"
+                          href={gotoProfile}
                         >
                           <img
                             src={icon_exit}
@@ -161,7 +165,7 @@ export default function PynkHeader(props) {
                             alt="icon_exit"
                           />
                           profile
-                        </Link>
+                        </a>
                       </li>
                       <li>
                         <a

@@ -168,3 +168,8 @@
   /* background-color: #e9ecef; */
   color: #e25e96 !important;
 }
+
+.dropdown-item:active {
+  background-color: transparent !important;
+  color: inherit !important;
+}
