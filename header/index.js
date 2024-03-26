@@ -34,6 +34,10 @@ export default function PynkHeader(props) {
     ? urlPynkBase + "/sale-page?link=bettershape"
     : localHostBase + "/sale-page?link=bettershape";
 
+  const urlBetterAdmin = isLocalHost
+    ? urlPynkBase + "/import-members"
+    : localHostBase + "/import-members";
+
   const urlCarrotHome = isLocalHost
     ? urlPynkBase + "/sale-page?link=getfit"
     : localHostBase + "/sale-page?link=getfit";
@@ -69,7 +73,18 @@ export default function PynkHeader(props) {
 
     const data = await response.json();
 
-    if (data.results.message == "success") {
+    if (
+      data.results.message == "success" &&
+      data.results.user.authorization == "admin"
+    ) {
+      const encodedParams = btoa(JSON.stringify(dataCookiesLoginUser));
+      window.location.href = urlPreemProd + `/import-members`;
+    }
+
+    if (
+      data.results.message == "success" &&
+      data.results.user.authorization == "member"
+    ) {
       const encodedParams = btoa(JSON.stringify(dataCookiesLoginUser));
       window.location.href =
         urlPreemProd + `/videolist?encodedParams=${encodedParams}`;
@@ -155,10 +170,7 @@ export default function PynkHeader(props) {
                     </div>
                     <ul class="dropdown-menu">
                       <li>
-                        <a
-                          class="dropdown-item color_link"
-                          href={gotoProfile}
-                        >
+                        <a class="dropdown-item color_link" href={gotoProfile}>
                           <img
                             src={icon_exit}
                             className="icon-edit cursor-pointer"
