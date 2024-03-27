@@ -79,6 +79,7 @@ export default function PynkHeader(props) {
     ) {
       const encodedParams = btoa(JSON.stringify(dataCookiesLoginUser));
       window.location.href = urlPreemProd + `/import-members`;
+      return;
     }
 
     if (
@@ -98,7 +99,20 @@ export default function PynkHeader(props) {
       `https://api.planforfit.com/fit_carrot/login?email=${dataCookiesLoginUser}`
     );
     const data = await response.json();
-    if (data.results.message == "success") {
+
+    if (
+      data.results.message == "success" &&
+      data.results.user.authorization == "admin"
+    ) {
+      const encodedParams = btoa(JSON.stringify(dataCookiesLoginUser));
+      window.location.href = urlCarrotProd + `/import-members`;
+      return;
+    }
+
+    if (
+      data.results.message == "success" &&
+      data.results.user.authorization == "member"
+    ) {
       const encodedParams = btoa(JSON.stringify(dataCookiesLoginUser));
       window.location.href =
         urlCarrotProd + `/videolist?encodedParams=${encodedParams}`;
