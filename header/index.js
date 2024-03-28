@@ -34,13 +34,13 @@ export default function PynkHeader(props) {
     ? urlPynkBase + "/sale-page?link=bettershape"
     : localHostBase + "/sale-page?link=bettershape";
 
-  const urlBetterAdmin = isLocalHost
-    ? urlPynkBase + "/import-members"
-    : localHostBase + "/import-members";
-
   const urlCarrotHome = isLocalHost
     ? urlPynkBase + "/sale-page?link=getfit"
     : localHostBase + "/sale-page?link=getfit";
+
+  const url7DaysHome = isLocalHost
+    ? urlPynkBase + "/sale-page?link=7day"
+    : localHostBase + "/sale-page?link=7day";
 
   const urlPynkProd = isLocalHost ? urlPynkBase : localHostBase;
 
@@ -50,6 +50,10 @@ export default function PynkHeader(props) {
 
   const urlCarrotProd = isLocalHost
     ? "https://staging.carrotworkout.pynk.co/#"
+    : "http://localhost:3001/#";
+
+  const url7DaysProd = isLocalHost
+    ? "https://staging.7daypilates.pynk.co/#"
     : "http://localhost:3001/#";
 
   const handleLogin = () => {
@@ -77,7 +81,6 @@ export default function PynkHeader(props) {
       data.results.message == "success" &&
       data.results.user.authorization == "admin"
     ) {
-      const encodedParams = btoa(JSON.stringify(dataCookiesLoginUser));
       window.location.href = urlPreemProd + `/import-members`;
       return;
     }
@@ -104,7 +107,6 @@ export default function PynkHeader(props) {
       data.results.message == "success" &&
       data.results.user.authorization == "admin"
     ) {
-      const encodedParams = btoa(JSON.stringify(dataCookiesLoginUser));
       window.location.href = urlCarrotProd + `/import-members`;
       return;
     }
@@ -118,6 +120,32 @@ export default function PynkHeader(props) {
         urlCarrotProd + `/videolist?encodedParams=${encodedParams}`;
     } else {
       window.location.href = urlCarrotHome;
+    }
+  };
+
+  const handleClickLogin7Days = async () => {
+    const response = await fetch(
+      `https://api.planforfit.com/fit_carrot/login?email=${dataCookiesLoginUser}`
+    );
+    const data = await response.json();
+
+    if (
+      data.results.message == "success" &&
+      data.results.user.authorization == "admin"
+    ) {
+      window.location.href = url7DaysProd + `/import-members`;
+      return;
+    }
+
+    if (
+      data.results.message == "success" &&
+      data.results.user.authorization == "member"
+    ) {
+      const encodedParams = btoa(JSON.stringify(dataCookiesLoginUser));
+      window.location.href =
+        url7DaysProd + `/videolist?encodedParams=${encodedParams}`;
+    } else {
+      window.location.href = url7DaysHome;
     }
   };
 
@@ -320,7 +348,6 @@ export default function PynkHeader(props) {
               >
                 จัดการบทความ
               </a> */}
-
               {/* <a
                 className="nav-link  link-pynk active2"
                 href="https://platform.bebefitroutine.com"
@@ -335,18 +362,18 @@ export default function PynkHeader(props) {
               >
                 Stay Fit
               </a> */}
-
               <a className="nav-link link-pynk" onClick={handleClickLoginPreem}>
                 Better Shape
               </a>
-
               <a
                 className="nav-link link-pynk"
                 onClick={handleClickLoginCarrot}
               >
                 Carrot
               </a>
-
+              <a className="nav-link link-pynk" onClick={handleClickLogin7Days}>
+                7Days
+              </a>
               <a
                 className="nav-link link-pynk"
                 href={gotoContent}
