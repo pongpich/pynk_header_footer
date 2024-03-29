@@ -19,8 +19,8 @@ export default function PynkHeader(props) {
     domain: urlCookieLoginWeb,
     path: "/",
   });
-  const urlPynkBase = "https://staging.pynk.co/#";
-  const localHostBase = "http://localhost:3000/#";
+  const urlPynkBase = "https://staging.pynk.co";
+  const localHostBase = "http://localhost:3000";
 
   const gotoContent = isLocalHost
     ? urlPynkBase + "/content"
@@ -45,16 +45,16 @@ export default function PynkHeader(props) {
   const urlPynkProd = isLocalHost ? urlPynkBase : localHostBase;
 
   const urlPreemProd = isLocalHost
-    ? "https://staging.preemworkout.pynk.co/#"
-    : "http://localhost:3001/#";
+    ? "https://staging.preemworkout.pynk.co"
+    : "http://localhost:3001";
 
   const urlCarrotProd = isLocalHost
-    ? "https://staging.carrotworkout.pynk.co/#"
-    : "http://localhost:3001/#";
+    ? "https://staging.carrotworkout.pynk.co"
+    : "http://localhost:3001";
 
   const url7DaysProd = isLocalHost
-    ? "https://staging.7daypilates.pynk.co/#"
-    : "http://localhost:3001/#";
+    ? "https://staging.7daypilates.pynk.co"
+    : "http://localhost:3001";
 
   const handleLogin = () => {
     window.location.href = urlPynkProd + "/login";
@@ -150,7 +150,7 @@ export default function PynkHeader(props) {
   };
 
   const handleBackHome = () => {
-    window.location.href = urlPynkProd + "/Home";
+    window.location.href = urlPynkProd + "/home";
   };
 
   return (
