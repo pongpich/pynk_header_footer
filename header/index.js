@@ -250,7 +250,7 @@ export default function PynkHeader(props) {
                 </button>
               )}
 
-              <h2
+              {/* <h2
                 style={{
                   color: "#BCCCD6",
                   fontWeight: 10,
@@ -289,7 +289,7 @@ export default function PynkHeader(props) {
                 src={shopping_bag_line}
                 className="truck-line-icon pointer"
                 alt="vector"
-              />
+              /> */}
             </div>
           </div>
         </div>
