@@ -49,7 +49,7 @@ export default function FooterPynk() {
           </div>
         </div>
       </div>
-      <div className="box-footer-bottom" style={{ paddingTop: 20 }}>
+      <div className="box-footer-bottom">
         <p>© 2022 BBPF RIGHTS RESERVED</p>
         <div className="policy-bottom">
           <div className="hr-policy policy-none" />
