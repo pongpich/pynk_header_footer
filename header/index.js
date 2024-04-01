@@ -330,7 +330,7 @@ export default function PynkHeader(props) {
           </div>
 
           <div className="collapse navbar-collapse navbarNav-ul" id="navbarNav">
-            <div className="navbar-nav w-100 d-flex gap-2 gap-md-4">
+            <div className="navbar-nav w-100 d-flex gap-2 gap-md-3">
               {/* <a
                 className="nav-link link-pynk"
                 onClick={() =>
@@ -365,19 +365,24 @@ export default function PynkHeader(props) {
               <a className="nav-link link-pynk" onClick={handleClickLoginPreem}>
                 Better Shape
               </a>
+
+              <div style={{ border: "1px solid grey" }} />
               <a
                 className="nav-link link-pynk"
                 onClick={handleClickLoginCarrot}
               >
                 Carrot
               </a>
+              <div style={{ border: "1px solid grey" }} />
+
               <a className="nav-link link-pynk" onClick={handleClickLogin7Days}>
                 7Days
               </a>
+              <div style={{ border: "1px solid grey" }} />
+
               <a
                 className="nav-link link-pynk"
                 href={gotoContent}
-                // onClick={() => this.props && props.history.push("/content")}
               >
                 บทความ
               </a>

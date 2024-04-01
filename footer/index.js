@@ -8,7 +8,6 @@ import instagram from "../image/icon_ig.png";
 import te from "../image/icon_tk.png";
 import line from "../image/icon_line.png";
 
-
 export default function FooterPynk() {
   return (
     <div>
@@ -30,11 +29,11 @@ export default function FooterPynk() {
               <div className="hr" />
               <p className="company-address">
                 <img src={phonelogo} alt="" className="phone-line" />
-                093-883-2339
+                <a href="tel:0938832339">093-883-2339</a>
               </p>
               <p className="company-address">
                 <img src={emaillogo} alt="" className="phone-line" />
-                contact@pynk.co
+                <a href="mailto:contact@pynk.co">contact@pynk.co</a>
               </p>
             </div>
             <div className="col-12 col-md-4">
@@ -50,7 +49,7 @@ export default function FooterPynk() {
           </div>
         </div>
       </div>
-      <div className="box-footer-bottom">
+      <div className="box-footer-bottom" style={{ paddingTop: 20 }}>
         <p>© 2022 BBPF RIGHTS RESERVED</p>
         <div className="policy-bottom">
           <div className="hr-policy policy-none" />
