@@ -42,6 +42,10 @@ export default function PynkHeader(props) {
     ? urlPynkBase + "/sale-page?link=7day"
     : localHostBase + "/sale-page?link=7day";
 
+  const urlBebefitHome = isLocalHost
+    ? urlPynkBase + "/sale-page?link=bebe"
+    : localHostBase + "/sale-page?link=bebe";
+
   const urlPynkProd = isLocalHost ? urlPynkBase : localHostBase;
 
   const urlPreemProd = isLocalHost
@@ -54,6 +58,10 @@ export default function PynkHeader(props) {
 
   const url7DaysProd = isLocalHost
     ? "https://staging.7daypilates.pynk.co"
+    : "http://localhost:3001";
+
+  const urlBebeFitProd = isLocalHost
+    ? "https://staging.platform.bebefitroutine.com"
     : "http://localhost:3001";
 
   const handleLogin = () => {
@@ -146,6 +154,32 @@ export default function PynkHeader(props) {
         url7DaysProd + `/videolist?encodedParams=${encodedParams}`;
     } else {
       window.location.href = url7DaysHome;
+    }
+  };
+
+  const handleClickLoginBebeFit = async () => {
+    const response = await fetch(
+      `https://api.planforfit.com/fit_carrot/login?email=${dataCookiesLoginUser}`
+    );
+    const data = await response.json();
+
+    if (
+      data.results.message == "success" &&
+      data.results.user.authorization == "admin"
+    ) {
+      window.location.href = urlBebeFitProd + `/import-members`;
+      return;
+    }
+
+    if (
+      data.results.message == "success" &&
+      data.results.user.authorization == "member"
+    ) {
+      const encodedParams = btoa(JSON.stringify(dataCookiesLoginUser));
+      window.location.href =
+        url7DaysProd + `/videolist?encodedParams=${encodedParams}`;
+    } else {
+      window.location.href = urlBebefitHome;
     }
   };
 
@@ -382,8 +416,13 @@ export default function PynkHeader(props) {
 
               <a
                 className="nav-link link-pynk"
-                href={gotoContent}
+                onClick={handleClickLoginBebeFit}
               >
+                Bebe Fit
+              </a>
+              <div style={{ border: "1px solid grey" }} />
+
+              <a className="nav-link link-pynk" href={gotoContent}>
                 บทความ
               </a>
             </div>
