@@ -177,7 +177,7 @@ export default function PynkHeader(props) {
     ) {
       const encodedParams = btoa(JSON.stringify(dataCookiesLoginUser));
       window.location.href =
-        url7DaysProd + `/videolist?encodedParams=${encodedParams}`;
+        urlBebeFitProd + `/videolist?encodedParams=${encodedParams}`;
     } else {
       window.location.href = urlBebefitHome;
     }
