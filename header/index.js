@@ -263,11 +263,15 @@ export default function PynkHeader(props) {
                 <div className="nav-pynk">
                   <div class="dropdown">
                     <div
-                      class="btn  dropdown-toggle"
+                      class="btn dropdown-toggle"
                       type="button"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
-                      style={{ marginTop: "-10px", marginRight: "-16px" }}
+                      style={{
+                        marginTop: "-10px",
+                        marginRight: "-16px",
+                        borderColor: "transparent",
+                      }}
                     >
                       <img
                         src={ellipse24}
