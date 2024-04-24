@@ -25,6 +25,16 @@
   src: url(../fonts/Prompt-SemiBold.ttf);
 }
 
+.btn:active {
+  border-color: transparent !important;
+}
+.btn.show {
+  border-color: transparent !important;
+}
+.btn.show:hover {
+  border-color: transparent !important;
+}
+
 .navbar-pynk {
   margin-bottom: 145px;
 }
