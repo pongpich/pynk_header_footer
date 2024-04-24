@@ -201,7 +201,7 @@ export default function PynkHeader(props) {
       data.results.message == "success" &&
       data.results.user.authorization == "admin"
     ) {
-      window.location.href = urlBebeStayFitProd + `/import-members`;
+      window.location.href = urlBebeStayFitProd + `/admin`;
       return;
     }
 
