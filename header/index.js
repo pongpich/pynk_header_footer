@@ -471,6 +471,7 @@ export default function PynkHeader(props) {
               <a className="nav-link link-pynk" href={gotoContent}>
                 บทความ
               </a>
+              
             </div>
           </div>
         </div>
