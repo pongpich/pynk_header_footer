@@ -141,7 +141,7 @@ export default function PynkHeader(props) {
 
   const handleClickLogin7Days = async () => {
     const response = await fetch(
-      `https://api.planforfit.com/fit_carrot/login?email=${dataCookiesLoginUser}`
+      `https://api.planforfit.com/pilates_ring_7day/login?email=${dataCookiesLoginUser}`
     );
     const data = await response.json();
 
@@ -167,7 +167,7 @@ export default function PynkHeader(props) {
 
   const handleClickLoginBebeFit = async () => {
     const response = await fetch(
-      `https://api.planforfit.com/fit_carrot/login?email=${dataCookiesLoginUser}`
+      `https://api.planforfit.com/bebe/login?email=${dataCookiesLoginUser}`
     );
     const data = await response.json();
 
@@ -471,7 +471,6 @@ export default function PynkHeader(props) {
               <a className="nav-link link-pynk" href={gotoContent}>
                 บทความ
               </a>
-              
             </div>
           </div>
         </div>
