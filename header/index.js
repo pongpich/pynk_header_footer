@@ -460,13 +460,13 @@ export default function PynkHeader(props) {
               </a>
               <div style={{ border: "1px solid grey" }} />
 
-              <a
+              {/* <a
                 className="nav-link link-pynk"
                 onClick={handleClickLoginBebeStayFit}
               >
                 Bebe StayFit
               </a>
-              <div style={{ border: "1px solid grey" }} />
+              <div style={{ border: "1px solid grey" }} /> */}
 
               <a className="nav-link link-pynk" href={gotoContent}>
                 บทความ
