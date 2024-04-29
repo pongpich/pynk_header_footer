@@ -167,7 +167,7 @@ export default function PynkHeader(props) {
 
   const handleClickLoginBebeFit = async () => {
     const response = await fetch(
-      `https://api.planforfit.com/bebe/login?email=${dataCookiesLoginUser}`
+      `https://api.planforfit.com/bebe/login?email=admin@bebefitroutine.com`
     );
     const data = await response.json();
 
