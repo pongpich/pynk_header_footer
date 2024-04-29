@@ -46,10 +46,6 @@ export default function PynkHeader(props) {
     ? urlPynkBase + "/sale-page?link=bebe"
     : localHostBase + "/sale-page?link=bebe";
 
-  const urlBebefitStayFitHome = isLocalHost
-    ? urlPynkBase + "/sale-page?link=bebe"
-    : localHostBase + "/sale-page?link=bebe";
-
   const urlPynkProd = isLocalHost ? urlPynkBase : localHostBase;
 
   const urlPreemProd = isLocalHost
@@ -65,11 +61,7 @@ export default function PynkHeader(props) {
     : "http://localhost:3001";
 
   const urlBebeFitProd = isLocalHost
-    ? "https://staging.platform.bebefitroutine.com"
-    : "http://localhost:3001";
-
-  const urlBebeStayFitProd = isLocalHost
-    ? "https://staging.fit.bebefitroutine.com"
+    ? "https://staging.platform.bebefitroutine.pynk.co"
     : "http://localhost:3001";
 
   const handleLogin = () => {
@@ -188,32 +180,6 @@ export default function PynkHeader(props) {
         urlBebeFitProd + `/videolist?encodedParams=${encodedParams}`;
     } else {
       window.location.href = urlBebefitHome;
-    }
-  };
-
-  const handleClickLoginBebeStayFit = async () => {
-    const response = await fetch(
-      `https://api.planforfit.com/fit_carrot/login?email=${dataCookiesLoginUser}`
-    );
-    const data = await response.json();
-
-    if (
-      data.results.message == "success" &&
-      data.results.user.authorization == "admin"
-    ) {
-      window.location.href = urlBebeStayFitProd + `/admin`;
-      return;
-    }
-
-    if (
-      data.results.message == "success" &&
-      data.results.user.authorization == "member"
-    ) {
-      const encodedParams = btoa(JSON.stringify(dataCookiesLoginUser));
-      window.location.href =
-        urlBebeStayFitProd + `/videolist?encodedParams=${encodedParams}`;
-    } else {
-      window.location.href = urlBebefitStayFitHome;
     }
   };
 
@@ -459,14 +425,6 @@ export default function PynkHeader(props) {
                 Bebe Platform
               </a>
               <div style={{ border: "1px solid grey" }} />
-
-              {/* <a
-                className="nav-link link-pynk"
-                onClick={handleClickLoginBebeStayFit}
-              >
-                Bebe StayFit
-              </a>
-              <div style={{ border: "1px solid grey" }} /> */}
 
               <a className="nav-link link-pynk" href={gotoContent}>
                 บทความ
