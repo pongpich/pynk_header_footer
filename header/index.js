@@ -456,7 +456,7 @@ export default function PynkHeader(props) {
                 className="nav-link link-pynk"
                 onClick={handleClickLoginBebeFit}
               >
-                Bebe Fit
+                Bebe Platform
               </a>
               <div style={{ border: "1px solid grey" }} />
 
