@@ -246,7 +246,7 @@ export default function PynkHeader(props) {
                         borderColor: "transparent",
                       }}
                     >
-                      <span className="d-none d-md-inline cook-email">
+                      <span className="d-inline cook-email">
                         Pynk Coin :  &nbsp;
                         {dataCookiesUserPynkCoinCookies ? dataCookiesUserPynkCoinCookies : '0'}                       
                       </span>
