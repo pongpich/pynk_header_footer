@@ -10,6 +10,7 @@ import close_line from "../image/close-line.png";
 import group from "../image/Group.png";
 import Cookies from "js-cookie";
 import "./header.css";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function PynkHeader(props) {
   const isLocalHost = window.location.hostname != "localhost";
@@ -19,6 +20,11 @@ export default function PynkHeader(props) {
     domain: urlCookieLoginWeb,
     path: "/",
   });
+  const dataCookiesUserPynkCoinCookies = Cookies.get("user_pynk_coin", {
+    domain: urlCookieLoginWeb,
+    path: "/",
+  });
+  console.log(dataCookiesUserPynkCoinCookies,'xxxxxxx');
   const urlPynkBase = "https://staging.pynk.co";
   const localHostBase = "http://localhost:3000";
 
@@ -72,6 +78,7 @@ export default function PynkHeader(props) {
     console.log("handle OnUser Logout");
     window.location.href = urlPynkProd + "/home";
     Cookies.remove("loginUser", { domain: urlCookieLoginWeb, path: "/" });
+    Cookies.remove("user_pynk_coin", { domain: urlCookieLoginWeb, path: "/" });
 
     if (document.getElementById("icon-google")) {
       document.getElementById("icon-google").click();
@@ -229,6 +236,22 @@ export default function PynkHeader(props) {
                 <div className="nav-pynk">
                   <div class="dropdown">
                     <div
+                      class="btn"
+                      type="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                      style={{
+                        marginTop: "-10px",
+                        marginRight: "-16px",
+                        borderColor: "transparent",
+                      }}
+                    >
+                      <span className="d-none d-md-inline cook-email">
+                        Pynk Coin :  &nbsp;
+                        {dataCookiesUserPynkCoinCookies ? dataCookiesUserPynkCoinCookies : '0'}                       
+                      </span>
+                    </div>
+                    <div
                       class="btn dropdown-toggle"
                       type="button"
                       data-bs-toggle="dropdown"
@@ -263,7 +286,7 @@ export default function PynkHeader(props) {
                         <a
                           class="dropdown-item color_link"
                           onClick={() => handleOnUserLogout()}
-                          // style={{ cursor: "pointer",  }}
+                        // style={{ cursor: "pointer",  }}
                         >
                           <img
                             src={icon_exit}
