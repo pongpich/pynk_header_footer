@@ -11,11 +11,14 @@ import group from "../image/Group.png";
 import Cookies from "js-cookie";
 import "./header.css";
 import { useSelector, useDispatch } from "react-redux";
+import { getMemberInfo } from "../../redux/get";
 
 export default function PynkHeader(props) {
   const isLocalHost = window.location.hostname != "localhost";
   const [groupImage, setGroupImage] = useState(false);
   const urlCookieLoginWeb = isLocalHost ? "pynk.co" : "localhost";
+  const [pynk_coin, setPynk_coin] = useState(0);
+
   const dataCookiesLoginUser = Cookies.get("loginUser", {
     domain: urlCookieLoginWeb,
     path: "/",
@@ -24,7 +27,39 @@ export default function PynkHeader(props) {
     domain: urlCookieLoginWeb,
     path: "/",
   });
-  console.log(dataCookiesUserPynkCoinCookies,'xxxxxxx');
+  // clearStatusUpdateMemberEventLogScoreConvert
+  const { statusUpdateMemberEventLogScoreConvert } = useSelector(({ update }) => (update ? update : ""));
+
+  const refresh_pynk_coin = async () => {
+    // const response = await fetch(
+    //   `http://localhost:3003/getPynkMemberInfo?email=${dataCookiesLoginUser}`
+    // );
+
+    const response = await fetch(
+      `https://api.planforfit.com/pynk/getPynkCoin?email=${dataCookiesLoginUser}`
+    );
+
+    const data = await response.json();
+    // console.log(data);
+    // console.log(data['results']['pynk_coin'][0]['pynk_coin']);
+    if(data['results']['pynk_coin'][0]['pynk_coin']){
+      // console.log('test');
+      setPynk_coin(data['results']['pynk_coin'][0]['pynk_coin']);
+    }
+   
+  };
+  useEffect(() => {
+    
+    if (statusUpdateMemberEventLogScoreConvert === 'success') {
+      refresh_pynk_coin();
+    } else {
+    }
+  }, [statusUpdateMemberEventLogScoreConvert]);
+
+  useEffect(() => {
+    setPynk_coin(dataCookiesUserPynkCoinCookies);
+  },[]);
+
   const urlPynkBase = "https://staging.pynk.co";
   const localHostBase = "http://localhost:3000";
 
@@ -246,9 +281,9 @@ export default function PynkHeader(props) {
                         borderColor: "transparent",
                       }}
                     >
-                      <span className="d-inline cook-email">
+                      <span className="d-none d-md-inline cook-email">
                         Pynk Coin :  &nbsp;
-                        {dataCookiesUserPynkCoinCookies ? dataCookiesUserPynkCoinCookies : '0'}                       
+                        {pynk_coin}
                       </span>
                     </div>
                     <div
