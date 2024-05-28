@@ -24,7 +24,26 @@ export default function PynkHeader(props) {
     domain: urlCookieLoginWeb,
     path: "/",
   });
-  console.log(dataCookiesUserPynkCoinCookies,'xxxxxxx');
+  const [pynk_coin, setPynk_coin] = useState(0);
+
+  useEffect(() => {
+    if (dataCookiesLoginUser) {
+      (async () => {
+        try {
+          const response = await fetch(`https://api.planforfit.com/pynk/getPynkCoin?email=${dataCookiesLoginUser}`);
+          const data = await response.json();
+          console.log(data['results']['pynk_coin'][0]['pynk_coin']);
+          console.log(dataCookiesLoginUser, 'xxxxxxx');
+          setPynk_coin(data['results']['pynk_coin'][0]['pynk_coin']);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      })();
+    }
+  }, [dataCookiesLoginUser]);
+
+
+  
   const urlPynkBase = "https://staging.pynk.co";
   const localHostBase = "http://localhost:3000";
 
@@ -117,7 +136,6 @@ export default function PynkHeader(props) {
       `https://api.planforfit.com/fit_carrot/login?email=${dataCookiesLoginUser}`
     );
     const data = await response.json();
-
     if (
       data.results.message == "success" &&
       data.results.user.authorization == "admin"
@@ -248,7 +266,7 @@ export default function PynkHeader(props) {
                     >
                       <span className="d-none d-md-inline cook-email">
                         Pynk Coin :  &nbsp;
-                        {dataCookiesUserPynkCoinCookies ? dataCookiesUserPynkCoinCookies : '0'}                       
+                        {pynk_coin}                       
                       </span>
                     </div>
                     <div
