@@ -19,6 +19,7 @@ export default function PynkHeader(props) {
   const urlCookieLoginWeb = isLocalHost ? "pynk.co" : "localhost";
   const [pynk_coin, setPynk_coin] = useState(0);
 
+  console.log(pynk_coin);
   const dataCookiesLoginUser = Cookies.get("loginUser", {
     domain: urlCookieLoginWeb,
     path: "/",
@@ -30,6 +31,22 @@ export default function PynkHeader(props) {
   // clearStatusUpdateMemberEventLogScoreConvert
   const { statusUpdateMemberEventLogScoreConvert } = useSelector(({ update }) => (update ? update : ""));
 
+  useEffect(() => {
+    if (dataCookiesLoginUser) {
+      (async () => {
+        try {
+          const response = await fetch(`https://api.planforfit.com/pynk/getPynkCoin?email=${dataCookiesLoginUser}`);
+          const data = await response.json();
+          console.log(data['results']['pynk_coin'][0]['pynk_coin']);
+          console.log(dataCookiesLoginUser, 'xxxxxxx');
+          setPynk_coin(data['results']['pynk_coin'][0]['pynk_coin']);
+        } catch (error) {
+          console.error('Error fetching data:', error);
+        }
+      })();
+    }
+  }, [dataCookiesLoginUser]);
+  
   const refresh_pynk_coin = async () => {
     // const response = await fetch(
     //   `http://localhost:3003/getPynkMemberInfo?email=${dataCookiesLoginUser}`
@@ -40,7 +57,7 @@ export default function PynkHeader(props) {
     );
 
     const data = await response.json();
-    // console.log(data);
+    console.log(data);
     // console.log(data['results']['pynk_coin'][0]['pynk_coin']);
     if(data['results']['pynk_coin'][0]['pynk_coin']){
       // console.log('test');
